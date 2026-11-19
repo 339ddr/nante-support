@@ -6,6 +6,10 @@ venv/
 .env
 .pytest_cache/
 
+# IDE 本机配置（含绝对路径，不适合提交）
+.idea/
+.vscode/
+
 # 构建产物：首次启动会自动重新生成
 data/chroma/
 data/chunks.jsonl

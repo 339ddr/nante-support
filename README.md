@@ -23,7 +23,7 @@ venv\Scripts\activate
 # macOS / Linux
 source venv/bin/activate
 
-# 2. 安装依赖
+# 2. 安装依赖(一定要哦)
 pip install -r requirements.txt
 
 # 3. 复制环境变量模板（不改也能跑）
