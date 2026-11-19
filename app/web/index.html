@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>南特金属 · 智能客服</title>
+  <meta name="description" content="南特金属智能客服：商品选型、退货政策、保修与安装问题，一次问清楚。" />
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="logo">
+          <svg viewBox="0 0 40 40" aria-hidden="true">
+            <path d="M20 2 36 11v18L20 38 4 29V11z" fill="url(#g1)" opacity=".18"></path>
+            <path d="M20 2 36 11v18L20 38 4 29V11z" fill="none" stroke="url(#g1)" stroke-width="1.6"></path>
+            <path d="M14 12v14h9M25 12l-7 7 7 7" fill="none" stroke="#dbeafe" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path>
+            <defs>
+              <linearGradient id="g1" x1="4" y1="2" x2="36" y2="38">
+                <stop stop-color="#60a5fa"></stop>
+                <stop offset="1" stop-color="#22d3ee"></stop>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1>南特金属</h1>
+          <p>AI 选型 · 售后顾问</p>
+        </div>
+      </div>
+
+      <div class="side-block">
+        <div class="side-title"><span>商品分类</span><em id="productTotal">30 件</em></div>
+        <nav class="cat-list" id="categoryList"></nav>
+      </div>
+
+      <div class="side-block side-quick">
+        <div class="side-title"><span>快捷提问</span></div>
+        <div class="quick-list" id="quickList"></div>
+      </div>
+
+      <div class="side-footer">
+        <div class="live-row"><i class="live-dot"></i><span id="kbStatus">知识库连接中…</span></div>
+        <p>客服微信 <b>nante_parts</b></p>
+        <p class="muted">服务时间 09:00 - 21:00</p>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="icon-btn menu-btn" id="menuBtn" aria-label="菜单">
+          <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+        <div class="topbar-title">
+          <h2>在线客服</h2>
+          <p id="modelInfo"><span class="pulse"></span> 正在连接知识库…</p>
+        </div>
+        <div class="topbar-actions">
+          <span class="pill" id="modeBadge">检索模式</span>
+          <button class="ghost-btn" id="newChatBtn">
+            <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            新对话
+          </button>
+          <button class="ghost-btn" id="settingsBtn" type="button" title="模型设置">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.2 5.2l2.1 2.1M16.7 16.7l2.1 2.1M18.8 5.2l-2.1 2.1M7.3 16.7l-2.1 2.1" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+            设置
+          </button>
+        </div>
+      </header>
+
+      <div class="chat" id="chat">
+        <section class="welcome" id="welcome">
+          <div class="hero">
+            <div class="hero-grid"></div>
+            <span class="hero-tag">RAG · 知识库实时检索</span>
+            <h2>选对配件，<br /><span>比买得便宜更重要。</span></h2>
+            <p>30 件在售商品、退货政策、保修与安装规范已接入知识库。<br />说清车型和配件，我帮你把适配、价格、售后一次讲明白。</p>
+            <div class="hero-stats">
+              <div><b id="statProducts">30</b><span>在售商品</span></div>
+              <div><b>3</b><span>知识库文档</span></div>
+              <div><b>7×24</b><span>在线响应</span></div>
+            </div>
+          </div>
+
+          <div class="suggestions" id="suggestions">
+            <button class="sug-card" data-q="宝马3系 前刹车片多少钱？">
+              <span class="sug-icon">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 3.5v5M12 15.5v5M3.5 12h5M15.5 12h5" stroke="currentColor" stroke-width="1.6"/></svg>
+              </span>
+              <b>配件选型与报价</b>
+              <small>按车型查适配、价格与品牌</small>
+            </button>
+            <button class="sug-card" data-q="七天无理由退货运费谁承担？">
+              <span class="sug-icon">
+                <svg viewBox="0 0 24 24"><path d="M4 9h11a5 5 0 0 1 0 10H8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="m8 5-4 4 4 4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <b>退货退款政策</b>
+              <small>条件、运费、时效一次看懂</small>
+            </button>
+            <button class="sug-card" data-q="买的刹车片200元包邮，能退多少钱？">
+              <span class="sug-icon">
+                <svg viewBox="0 0 24 24"><rect x="5" y="3.5" width="14" height="17" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8.5 8h7M8.5 12h7M8.5 16h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+              </span>
+              <b>退款金额测算</b>
+              <small>支持满减分摊与包邮扣运费</small>
+            </button>
+            <button class="sug-card" data-q="AGM电瓶和普通电瓶能互换吗？">
+              <span class="sug-icon">
+                <svg viewBox="0 0 24 24"><path d="M13 2 5 13h6l-1 9 8-11h-6z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+              </span>
+              <b>技术常识</b>
+              <small>机油标号、电瓶、刹车配方</small>
+            </button>
+            <button class="sug-card" data-q="发动机核心件保修多久？">
+              <span class="sug-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 3.5 19 6.4v5c0 4.2-2.9 7.4-7 9.1-4.1-1.7-7-4.9-7-9.1v-5z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="m9 12 2.2 2.2L15.5 10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <b>保修规则</b>
+              <small>六档保修、易损件与例外</small>
+            </button>
+            <button class="sug-card" data-q="更换刹车片需要准备什么工具？">
+              <span class="sug-icon">
+                <svg viewBox="0 0 24 24"><path d="M14.5 6a3.5 3.5 0 0 0-4.6 4.2L5 15.1V19h3.9l4.9-4.9A3.5 3.5 0 0 0 18 9.5L16 11l-1.5-1.5L16 8z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+              </span>
+              <b>安装指引</b>
+              <small>难度分级、工具与安全提示</small>
+            </button>
+          </div>
+        </section>
+      </div>
+
+      <footer class="composer">
+        <div class="composer-box">
+          <textarea id="input" rows="1" maxlength="1000" placeholder="例如：宝马3系 前刹车片多少钱？七天无理由退货运费谁出？"></textarea>
+          <button id="sendBtn" class="send-btn" aria-label="发送">
+            <svg viewBox="0 0 24 24"><path d="m4 12 16-8-6 16-3.2-6.2z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <p class="composer-hint">Enter 发送 · Shift + Enter 换行 · 回答基于《全店商品明细说明书》《退货政策》《FAQ》，价格以商品页为准</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="drawer-mask" id="drawerMask"></div>
+
+  <!-- 模型配置弹窗：首次进入自动弹出 -->
+  <div class="modal llm-modal" id="llmModal" aria-hidden="true">
+    <div class="modal-card llm-card">
+      <div class="modal-head">
+        <div>
+          <p class="modal-kicker">模型设置</p>
+          <h3>接入你自己的大模型</h3>
+        </div>
+        <button class="icon-btn" id="closeLlm" aria-label="关闭">
+          <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+
+      <p class="llm-intro">
+        填入任意 OpenAI 兼容接口即可启用大模型回答。<strong>密钥只保存在你自己的浏览器里</strong>，
+        随每次请求转发，服务端不存储、不写日志。不填也能用——系统会走本地混合检索。
+      </p>
+
+      <label class="llm-field">
+        <span>接口地址 base_url</span>
+        <input id="llmBaseUrl" type="text" spellcheck="false" placeholder="https://api.deepseek.com/v1" />
+      </label>
+
+      <label class="llm-field">
+        <span>API Key</span>
+        <input id="llmApiKey" type="password" spellcheck="false" placeholder="sk-..." autocomplete="off" />
+      </label>
+
+      <label class="llm-field">
+        <span>模型名称 <em>（可留空）</em></span>
+        <input id="llmModel" type="text" spellcheck="false" placeholder="deepseek-chat" />
+      </label>
+
+      <p class="llm-status" id="llmStatus"></p>
+
+      <div class="llm-actions">
+        <button class="ghost-btn" id="llmTestBtn" type="button">测试连接</button>
+        <button class="ghost-btn" id="llmClearBtn" type="button">清除</button>
+        <button class="primary-btn" id="llmSaveBtn" type="button">保存并使用</button>
+      </div>
+
+      <button class="llm-skip" id="llmSkipBtn" type="button">先不配置，使用本地检索模式</button>
+    </div>
+  </div>
+
+  <div class="modal" id="citeModal" aria-hidden="true">
+    <div class="modal-card">
+      <div class="modal-head">
+        <div>
+          <p class="modal-kicker">知识库引用</p>
+          <h3 id="citeTitle">—</h3>
+        </div>
+        <button class="icon-btn" id="closeModal" aria-label="关闭">
+          <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <p class="modal-section" id="citeSection"></p>
+      <div class="modal-snippet" id="citeSnippet"></div>
+    </div>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

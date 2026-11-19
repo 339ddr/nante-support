@@ -1,0 +1,18 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.env
+.pytest_cache/
+
+# 构建产物：首次启动会自动重新生成
+data/chroma/
+data/chunks.jsonl
+data/idf.json
+data/products.json
+data/feedback.jsonl
+
+# 临时文件
+_tmp/
+*.log
